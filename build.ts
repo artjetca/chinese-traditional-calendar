@@ -103,6 +103,7 @@ function generateStaticHTML(): string {
       background: transparent; color: #e2e8f0; cursor: pointer; font-size: 13px;
     }
     .quick-btn:hover { background: #334155; border-color: #fbbf24; }
+    .quick-btn.active { background: #fbbf24; color: #1a1a2e; border-color: #fbbf24; }
     .quick-btn.yi { border-color: #22c55e; color: #22c55e; }
     .quick-btn.ji { border-color: #ef4444; color: #ef4444; }
     .calendar-card { 
@@ -289,19 +290,28 @@ function generateStaticHTML(): string {
     }
 
     function checkActivity() {
-      const date = document.getElementById('datePicker').value;
       const activity = document.getElementById('activitySelect').value;
       if (activity) {
         selectedActivity = activity;
-        window.location.href = '/?date=' + date + '&activity=' + encodeURIComponent(activity);
+        updateCalendar();
+        highlightQuickBtn(activity);
       }
     }
 
     function selectActivity(activity) {
       selectedActivity = activity;
       document.getElementById('activitySelect').value = activity;
-      const date = document.getElementById('datePicker').value;
-      window.location.href = '/?date=' + date + '&activity=' + encodeURIComponent(activity);
+      updateCalendar();
+      highlightQuickBtn(activity);
+    }
+
+    function highlightQuickBtn(activity) {
+      document.querySelectorAll('.quick-btn').forEach(btn => {
+        btn.classList.remove('yi', 'ji', 'active');
+        if (btn.textContent === activity) {
+          btn.classList.add('active');
+        }
+      });
     }
 
     function goToDate(y, m, d) {
