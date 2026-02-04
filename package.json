@@ -1,0 +1,31 @@
+{
+  "name": "chinese-calendar",
+  "version": "1.0.0",
+  "description": "中國傳統擇日萬年曆系統",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsx build.ts",
+    "build:tsc": "tsc",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "server": "tsx src/server.ts",
+    "test": "tsx src/test.ts"
+  },
+  "keywords": [
+    "chinese-calendar",
+    "lunar",
+    "ganzhi",
+    "fortune"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "lunar-javascript": "^1.7.7",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "@netlify/functions": "^5.1.2"
+  }
+}
