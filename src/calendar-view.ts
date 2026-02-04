@@ -9,8 +9,8 @@ import { getSolarTermOfDate } from './core/solarterms.js';
 import { EARTHLY_BRANCHES, ZODIAC_ANIMALS } from './core/constants.js';
 
 // 沖煞計算
-const CLASH_ANIMALS = ['鼠', '牛', '虎', '兔', '龍', '蛇', '馬', '羊', '猴', '雞', '狗', '豬'];
-const SHA_DIRECTIONS = ['北', '西', '南', '東'];
+const CLASH_ANIMALS = ['Rata', 'Buey', 'Tigre', 'Conejo', 'Dragón', 'Serpiente', 'Caballo', 'Cabra', 'Mono', 'Gallo', 'Perro', 'Cerdo'];
+const SHA_DIRECTIONS = ['Norte', 'Oeste', 'Sur', 'Este'];
 
 function getClashAnimal(dayZhiIndex: number): string {
   const clashIndex = (dayZhiIndex + 6) % 12;
@@ -20,7 +20,7 @@ function getClashAnimal(dayZhiIndex: number): string {
 function getShaDirection(dayZhiIndex: number): string {
   // 煞方計算：申子辰煞南，寅午戌煞北，亥卯未煞西，巳酉丑煞東
   const groups = [[8, 0, 4], [2, 6, 10], [11, 3, 7], [5, 9, 1]];
-  const dirs = ['南', '北', '西', '東'];
+  const dirs = ['Sur', 'Norte', 'Oeste', 'Este'];
   for (let i = 0; i < groups.length; i++) {
     if (groups[i].includes(dayZhiIndex)) return dirs[i];
   }
@@ -78,7 +78,7 @@ export function generateCalendarHTML(year: number, month: number, selectedActivi
   const startWeekday = firstDay.getDay();
   const days = generateMonthData(year, month);
   
-  const weekHeaders = ['星期日(SUN)', '星期一(MON)', '星期二(TUE)', '星期三(WED)', '星期四(THU)', '星期五(FRI)', '星期六(SAT)'];
+  const weekHeaders = ['DOM', 'LUN', 'MAR', 'MIÉ', 'JUE', 'VIE', 'SÁB'];
   
   let html = '<div class="trad-calendar">';
   html += '<div class="trad-header">';

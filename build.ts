@@ -13,8 +13,8 @@ function generateStaticHTML(): string {
   const info = getDayInfo(year, month, day);
   
   const hourlyHTML = info.hourlyFortune.map(h => {
-    const color = h.fortune === '吉' ? '#22c55e' : h.fortune === '凶' ? '#ef4444' : '#6b7280';
-    const icon = h.fortune === '吉' ? '☆' : h.fortune === '凶' ? '●' : '○';
+    const color = h.fortune === 'Bueno' ? '#22c55e' : h.fortune === 'Malo' ? '#ef4444' : '#6b7280';
+    const icon = h.fortune === 'Bueno' ? '☆' : h.fortune === 'Malo' ? '●' : '○';
     return `<div class="hour-item" style="border-left: 3px solid ${color}">
       <span class="hour-icon">${icon}</span>
       <strong>${h.hourName}</strong> ${h.ganZhi}
@@ -24,11 +24,11 @@ function generateStaticHTML(): string {
   }).join('');
 
   return `<!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>中國傳統擇日萬年曆</title>
+  <title>Calendario Tradicional Chino</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { 
@@ -144,117 +144,117 @@ function generateStaticHTML(): string {
 </head>
 <body>
   <div class="container">
-    <h1>🗓️ 中國傳統擇日萬年曆</h1>
+    <h1>🗓️ Calendario Tradicional Chino</h1>
     
     <div class="date-picker">
       <input type="date" id="datePicker" value="${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}">
-      <button onclick="changeDate()">查詢</button>
-      <button onclick="goToday()">今天</button>
+      <button onclick="changeDate()">Buscar</button>
+      <button onclick="goToday()">Hoy</button>
     </div>
 
     <div class="card" id="mainCard">
-      <div class="card-title">日期資訊</div>
+      <div class="card-title">Información de Fecha</div>
       <div class="main-date" id="mainDate">${info.gregorianDate} ${info.weekday}</div>
       <div class="lunar-date" id="lunarDate">${info.lunarYear}年 ${info.lunarMonthName} ${info.lunarDayName}</div>
       <div class="ganzhi-row" id="ganzhiRow">
         <div class="ganzhi-item">
-          <div class="ganzhi-label">年柱</div>
+          <div class="ganzhi-label">Pilar Año</div>
           <div class="ganzhi-value">${info.yearGanZhi}</div>
           <div class="ganzhi-nayin">${info.yearNaYin}</div>
         </div>
         <div class="ganzhi-item">
-          <div class="ganzhi-label">月柱</div>
+          <div class="ganzhi-label">Pilar Mes</div>
           <div class="ganzhi-value">${info.monthGanZhi}</div>
           <div class="ganzhi-nayin">${info.monthNaYin}</div>
         </div>
         <div class="ganzhi-item">
-          <div class="ganzhi-label">日柱</div>
+          <div class="ganzhi-label">Pilar Día</div>
           <div class="ganzhi-value">${info.dayGanZhi}</div>
           <div class="ganzhi-nayin">${info.dayNaYin}</div>
         </div>
         <div class="ganzhi-item">
-          <div class="ganzhi-label">時柱</div>
+          <div class="ganzhi-label">Pilar Hora</div>
           <div class="ganzhi-value" id="hourGanZhi">—</div>
-          <div class="ganzhi-nayin">現時</div>
+          <div class="ganzhi-nayin">Actual</div>
         </div>
       </div>
     </div>
 
     <div class="card" id="infoCard">
-      <div class="card-title">基本資訊</div>
+      <div class="card-title">Información Básica</div>
       <div class="info-grid" id="infoGrid">
         <div class="info-item">
-          <div class="info-label">生肖</div>
+          <div class="info-label">Zodiaco</div>
           <div class="info-value">${info.zodiac}年</div>
         </div>
         <div class="info-item">
-          <div class="info-label">建除</div>
+          <div class="info-label">JianChu</div>
           <div class="info-value">${info.jianChu}日</div>
         </div>
         <div class="info-item">
-          <div class="info-label">沖</div>
+          <div class="info-label">Conflicto</div>
           <div class="info-value">沖${info.clash}</div>
         </div>
         <div class="info-item">
-          <div class="info-label">煞</div>
+          <div class="info-label">Sha</div>
           <div class="info-value">煞${info.shaDirection}</div>
         </div>
       </div>
     </div>
 
     <div class="card" id="yiJiCard">
-      <div class="card-title">今日宜忌</div>
+      <div class="card-title">Favorable / Desfavorable Hoy</div>
       <div class="yi-ji" id="yiJi">
         <div class="yi">
-          <div class="yi-title">✓ 宜</div>
+          <div class="yi-title">✓ Favorable</div>
           <div class="yi-list">${info.auspicious.join('、') || '無'}</div>
         </div>
         <div class="ji">
-          <div class="ji-title">✗ 忌</div>
+          <div class="ji-title">✗ Desfavorable</div>
           <div class="ji-list">${info.inauspicious.join('、') || '無'}</div>
         </div>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-title">選擇活動查看本月適宜日期</div>
+      <div class="card-title">Seleccionar Actividad para Ver Días Favorables</div>
       <div class="activity-selector">
         <select id="activitySelect">
-          <option value="">-- 選擇活動 --</option>
-          <option value="祭祀">祭祀</option>
-          <option value="祈福">祈福</option>
-          <option value="嫁娶">嫁娶</option>
-          <option value="開市">開市</option>
-          <option value="動土">動土</option>
-          <option value="修造">修造</option>
-          <option value="入宅">入宅</option>
-          <option value="出行">出行</option>
-          <option value="納財">納財</option>
-          <option value="安葬">安葬</option>
+          <option value="">-- Seleccionar Actividad --</option>
+          <option value="祭祀">Ceremonias</option>
+          <option value="祈福">Oraciones</option>
+          <option value="嫁娶">Matrimonio</option>
+          <option value="開市">Inauguración</option>
+          <option value="動土">Construcción</option>
+          <option value="修造">Renovación</option>
+          <option value="入宅">Mudanza</option>
+          <option value="出行">Viaje</option>
+          <option value="納財">Finanzas</option>
+          <option value="安葬">Entierro</option>
         </select>
-        <button onclick="checkActivity()">查詢</button>
+        <button onclick="checkActivity()">Buscar</button>
       </div>
       <div class="quick-activities">
-        <button class="quick-btn" onclick="selectActivity('祭祀')">祭祀</button>
-        <button class="quick-btn" onclick="selectActivity('嫁娶')">嫁娶</button>
-        <button class="quick-btn" onclick="selectActivity('開市')">開市</button>
-        <button class="quick-btn" onclick="selectActivity('動土')">動土</button>
-        <button class="quick-btn" onclick="selectActivity('入宅')">入宅</button>
-        <button class="quick-btn" onclick="selectActivity('出行')">出行</button>
+        <button class="quick-btn" onclick="selectActivity('祭祀')">Ceremonias</button>
+        <button class="quick-btn" onclick="selectActivity('嫁娶')">Matrimonio</button>
+        <button class="quick-btn" onclick="selectActivity('開市')">Inauguración</button>
+        <button class="quick-btn" onclick="selectActivity('動土')">Construcción</button>
+        <button class="quick-btn" onclick="selectActivity('入宅')">Mudanza</button>
+        <button class="quick-btn" onclick="selectActivity('出行')">Viaje</button>
       </div>
     </div>
 
     <div class="calendar-card" id="calendarCard">
       <div class="month-nav">
-        <button onclick="prevMonth()">◀ 上月</button>
-        <div class="month-title" id="monthTitle">📅 ${year}年${month}月</div>
-        <button onclick="nextMonth()">下月 ▶</button>
+        <button onclick="prevMonth()">◀ Anterior</button>
+        <div class="month-title" id="monthTitle">📅 ${month}/${year}</div>
+        <button onclick="nextMonth()">Siguiente ▶</button>
       </div>
       <div id="calendarBody">${generateCalendarHTML(year, month)}</div>
     </div>
 
     <div class="card" id="hourlyCard">
-      <div class="card-title">時辰吉凶</div>
+      <div class="card-title">Fortuna por Hora</div>
       <div class="hourly-grid" id="hourlyGrid">${hourlyHTML}</div>
     </div>
   </div>
@@ -263,7 +263,7 @@ function generateStaticHTML(): string {
   <div class="modal-overlay" id="dayModal" onclick="closeModal(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
       <div class="modal-header">
-        <h3 id="modalTitle">日期詳情</h3>
+        <h3 id="modalTitle">Detalles del Día</h3>
         <button class="modal-close" onclick="closeModal()">&times;</button>
       </div>
       <div class="modal-body" id="modalBody">載入中...</div>
@@ -329,55 +329,55 @@ function generateStaticHTML(): string {
       const modal = document.getElementById('dayModal');
       const title = document.getElementById('modalTitle');
       const body = document.getElementById('modalBody');
-      title.textContent = y + '年' + m + '月' + d + '日';
-      body.innerHTML = '載入中...';
+      title.textContent = d + '/' + m + '/' + y;
+      body.innerHTML = 'Cargando...';
       modal.classList.add('show');
       fetch('/api/day?date=' + y + '-' + String(m).padStart(2,'0') + '-' + String(d).padStart(2,'0'))
         .then(r => r.json())
         .then(data => {
           body.innerHTML = \`
             <div class="modal-section">
-              <div class="modal-section-title">農曆</div>
+              <div class="modal-section-title">Calendario Lunar</div>
               <div class="modal-lunar">\${data.lunarYear}年 \${data.lunarMonthName} \${data.lunarDayName}</div>
             </div>
             <div class="modal-section">
-              <div class="modal-section-title">干支四柱</div>
+              <div class="modal-section-title">Cuatro Pilares</div>
               <div class="modal-ganzhi">
-                <div class="modal-ganzhi-item"><div class="modal-ganzhi-label">年柱</div><div class="modal-ganzhi-value">\${data.yearGanZhi}</div></div>
-                <div class="modal-ganzhi-item"><div class="modal-ganzhi-label">月柱</div><div class="modal-ganzhi-value">\${data.monthGanZhi}</div></div>
-                <div class="modal-ganzhi-item"><div class="modal-ganzhi-label">日柱</div><div class="modal-ganzhi-value">\${data.dayGanZhi}</div></div>
-                <div class="modal-ganzhi-item"><div class="modal-ganzhi-label">時柱</div><div class="modal-ganzhi-value">\${data.hourlyFortune[Math.floor(new Date().getHours() / 2) % 12]?.ganZhi || '—'}</div></div>
+                <div class="modal-ganzhi-item"><div class="modal-ganzhi-label">Año</div><div class="modal-ganzhi-value">\${data.yearGanZhi}</div></div>
+                <div class="modal-ganzhi-item"><div class="modal-ganzhi-label">Mes</div><div class="modal-ganzhi-value">\${data.monthGanZhi}</div></div>
+                <div class="modal-ganzhi-item"><div class="modal-ganzhi-label">Día</div><div class="modal-ganzhi-value">\${data.dayGanZhi}</div></div>
+                <div class="modal-ganzhi-item"><div class="modal-ganzhi-label">Hora</div><div class="modal-ganzhi-value">\${data.hourlyFortune[Math.floor(new Date().getHours() / 2) % 12]?.ganZhi || '—'}</div></div>
               </div>
             </div>
             <div class="modal-section">
-              <div class="modal-section-title">宜忌</div>
+              <div class="modal-section-title">Favorable / Desfavorable</div>
               <div class="modal-yi-ji">
-                <div class="modal-yi"><div class="modal-yi-title">✓ 宜</div><div class="modal-yi-list">\${data.auspicious.join('、') || '無'}</div></div>
-                <div class="modal-ji"><div class="modal-ji-title">✗ 忌</div><div class="modal-ji-list">\${data.inauspicious.join('、') || '無'}</div></div>
+                <div class="modal-yi"><div class="modal-yi-title">✓ Favorable</div><div class="modal-yi-list">\${data.auspicious.join('、') || '無'}</div></div>
+                <div class="modal-ji"><div class="modal-ji-title">✗ Desfavorable</div><div class="modal-ji-list">\${data.inauspicious.join('、') || '無'}</div></div>
               </div>
             </div>
             <div class="modal-section">
-              <div class="modal-section-title">其他資訊</div>
+              <div class="modal-section-title">Otra Información</div>
               <div class="modal-info-grid">
-                <div class="modal-info-item"><div class="modal-info-label">生肖</div><div class="modal-info-value">\${data.zodiac}年</div></div>
-                <div class="modal-info-item"><div class="modal-info-label">建除</div><div class="modal-info-value">\${data.jianChu}日</div></div>
-                <div class="modal-info-item"><div class="modal-info-label">沖</div><div class="modal-info-value">沖\${data.clash}</div></div>
-                <div class="modal-info-item"><div class="modal-info-label">煞</div><div class="modal-info-value">煞\${data.shaDirection}</div></div>
-                \${data.solarTerm ? '<div class="modal-info-item"><div class="modal-info-label">節氣</div><div class="modal-info-value">' + data.solarTerm + '</div></div>' : ''}
+                <div class="modal-info-item"><div class="modal-info-label">Zodiaco</div><div class="modal-info-value">\${data.zodiac}年</div></div>
+                <div class="modal-info-item"><div class="modal-info-label">JianChu</div><div class="modal-info-value">\${data.jianChu}日</div></div>
+                <div class="modal-info-item"><div class="modal-info-label">Conflicto</div><div class="modal-info-value">沖\${data.clash}</div></div>
+                <div class="modal-info-item"><div class="modal-info-label">Sha</div><div class="modal-info-value">煞\${data.shaDirection}</div></div>
+                \${data.solarTerm ? '<div class="modal-info-item"><div class="modal-info-label">Término Solar</div><div class="modal-info-value">' + data.solarTerm + '</div></div>' : ''}
               </div>
             </div>
             <div class="modal-section">
-              <div class="modal-section-title">時辰吉凶</div>
+              <div class="modal-section-title">Fortuna por Hora</div>
               <div class="modal-hours">
                 \${data.hourlyFortune.map(h => {
-                  const icon = h.fortune === '吉' ? '☆' : h.fortune === '凶' ? '●' : '○';
-                  const color = h.fortune === '吉' ? '#22c55e' : h.fortune === '凶' ? '#ef4444' : '#6b7280';
+                  const icon = h.fortune === 'Bueno' ? '☆' : h.fortune === 'Malo' ? '●' : '○';
+                  const color = h.fortune === 'Bueno' ? '#22c55e' : h.fortune === 'Malo' ? '#ef4444' : '#6b7280';
                   return '<div class="modal-hour-item" style="border-left:3px solid '+color+'"><span class="hour-icon">'+icon+'</span><strong>'+h.hourName+'</strong> '+h.ganZhi+'<span class="hour-time">'+h.timeRange+'</span><span class="hour-fortune" style="color:'+color+'">'+h.fortune+'</span></div>';
                 }).join('')}
               </div>
             </div>
             <div class="modal-section" style="text-align:center;margin-top:20px;">
-              <button class="modal-goto-btn" onclick="navigateToDate(\${y},\${m},\${d})">查看完整詳情 →</button>
+              <button class="modal-goto-btn" onclick="navigateToDate(\${y},\${m},\${d})">Ver Detalles Completos →</button>
             </div>
           \`;
         });
@@ -409,7 +409,7 @@ function generateStaticHTML(): string {
     }
 
     function updateCalendar() {
-      document.getElementById('monthTitle').textContent = '📅 ' + currentYear + '年' + currentMonth + '月';
+      document.getElementById('monthTitle').textContent = '📅 ' + currentMonth + '/' + currentYear;
       fetch('/api/calendar?year=' + currentYear + '&month=' + currentMonth + (selectedActivity ? '&activity=' + encodeURIComponent(selectedActivity) : ''))
         .then(r => r.text())
         .then(html => {

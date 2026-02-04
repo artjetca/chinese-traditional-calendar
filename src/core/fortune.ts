@@ -15,7 +15,7 @@ import {
   parseGanZhi
 } from './ganzhi';
 
-export type FortuneLevel = "吉" | "凶" | "平";
+export type FortuneLevel = "Bueno" | "Malo" | "Neutral";
 
 export interface HourlyFortuneInfo {
   hourIndex: number;
@@ -93,26 +93,26 @@ function calculateHourFortune(
   hourGanZhi: string
 ): FortuneLevel {
   const parsed = parseGanZhi(hourGanZhi);
-  if (!parsed) return "平";
+  if (!parsed) return "Neutral";
 
   const hourZhiIndex = parsed.zhiIndex;
 
   // 規則1：時辰與日支相沖為凶
   if (isClash(dayZhiIndex, hourZhiIndex)) {
-    return "凶";
+    return "Malo";
   }
 
   // 規則2：檢查是否為黃道吉時
   if (isHuangDaoHour(dayZhiIndex, hourIndex)) {
-    return "吉";
+    return "Bueno";
   }
 
   // 規則3：檢查是否為黑道凶時
   if (isHeiDaoHour(dayZhiIndex, hourIndex)) {
-    return "凶";
+    return "Malo";
   }
 
-  return "平";
+  return "Neutral";
 }
 
 /**
@@ -328,9 +328,9 @@ export function formatHourlyFortuneTable(fortunes: HourlyFortuneInfo[]): string[
  */
 function getFortuneSymbol(fortune: FortuneLevel): string {
   switch (fortune) {
-    case "吉": return "☆";
-    case "凶": return "●";
-    case "平": return "○";
+    case "Bueno": return "☆";
+    case "Malo": return "●";
+    case "Neutral": return "○";
     default: return "○";
   }
 }

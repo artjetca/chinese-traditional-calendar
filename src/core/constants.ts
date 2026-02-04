@@ -9,7 +9,7 @@ export const HEAVENLY_STEMS = ["甲", "乙", "丙", "丁", "戊", "己", "庚", 
 export const EARTHLY_BRANCHES = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"] as const;
 
 // 十二生肖
-export const ZODIAC_ANIMALS = ["鼠", "牛", "虎", "兔", "龍", "蛇", "馬", "羊", "猴", "雞", "狗", "豬"] as const;
+export const ZODIAC_ANIMALS = ["Rata", "Buey", "Tigre", "Conejo", "Dragón", "Serpiente", "Caballo", "Cabra", "Mono", "Gallo", "Perro", "Cerdo"] as const;
 
 // 五行
 export const FIVE_ELEMENTS = ["木", "火", "土", "金", "水"] as const;
@@ -46,18 +46,18 @@ export const HOUR_NAMES = [
 
 // 時辰對應時間
 export const HOUR_TIME_RANGES = [
-  { name: "子時", start: "23:00", end: "01:00", display: "晚上11時 - 早上1時" },
-  { name: "丑時", start: "01:00", end: "03:00", display: "早上1時 - 早上3時" },
-  { name: "寅時", start: "03:00", end: "05:00", display: "早上3時 - 早上5時" },
-  { name: "卯時", start: "05:00", end: "07:00", display: "早上5時 - 早上7時" },
-  { name: "辰時", start: "07:00", end: "09:00", display: "早上7時 - 早上9時" },
-  { name: "巳時", start: "09:00", end: "11:00", display: "早上9時 - 早上11時" },
-  { name: "午時", start: "11:00", end: "13:00", display: "早上11時 - 下午1時" },
-  { name: "未時", start: "13:00", end: "15:00", display: "下午1時 - 下午3時" },
-  { name: "申時", start: "15:00", end: "17:00", display: "下午3時 - 下午5時" },
-  { name: "酉時", start: "17:00", end: "19:00", display: "下午5時 - 晚上7時" },
-  { name: "戌時", start: "19:00", end: "21:00", display: "晚上7時 - 晚上9時" },
-  { name: "亥時", start: "21:00", end: "23:00", display: "晚上9時 - 晚上11時" }
+  { name: "Zǐ (Rata)", start: "23:00", end: "01:00", display: "23:00 - 01:00" },
+  { name: "Chǒu (Buey)", start: "01:00", end: "03:00", display: "01:00 - 03:00" },
+  { name: "Yín (Tigre)", start: "03:00", end: "05:00", display: "03:00 - 05:00" },
+  { name: "Mǎo (Conejo)", start: "05:00", end: "07:00", display: "05:00 - 07:00" },
+  { name: "Chén (Dragón)", start: "07:00", end: "09:00", display: "07:00 - 09:00" },
+  { name: "Sì (Serpiente)", start: "09:00", end: "11:00", display: "09:00 - 11:00" },
+  { name: "Wǔ (Caballo)", start: "11:00", end: "13:00", display: "11:00 - 13:00" },
+  { name: "Wèi (Cabra)", start: "13:00", end: "15:00", display: "13:00 - 15:00" },
+  { name: "Shēn (Mono)", start: "15:00", end: "17:00", display: "15:00 - 17:00" },
+  { name: "Yǒu (Gallo)", start: "17:00", end: "19:00", display: "17:00 - 19:00" },
+  { name: "Xū (Perro)", start: "19:00", end: "21:00", display: "19:00 - 21:00" },
+  { name: "Hài (Cerdo)", start: "21:00", end: "23:00", display: "21:00 - 23:00" }
 ] as const;
 
 // 六沖對照表（地支索引）
