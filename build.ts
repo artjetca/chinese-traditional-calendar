@@ -301,14 +301,6 @@ function generateStaticHTML(): string {
         </select>
         <button onclick="checkActivity()">Buscar</button>
       </div>
-      <div class="quick-activities">
-        <button class="quick-btn" onclick="selectActivity('Matrimonio')">Matrimonio</button>
-        <button class="quick-btn" onclick="selectActivity('Inauguración')">Negocios</button>
-        <button class="quick-btn" onclick="selectActivity('Mudanza')">Mudanza</button>
-        <button class="quick-btn" onclick="selectActivity('Viaje')">Viaje</button>
-        <button class="quick-btn" onclick="selectActivity('Ceremonias')">Ceremonias</button>
-        <button class="quick-btn" onclick="selectActivity('Entierro')">Funerario</button>
-      </div>
     </div>
 
     <div class="calendar-card" id="calendarCard">
