@@ -187,41 +187,41 @@ function isHeiDaoHour(dayZhiIndex: number, hourIndex: number): boolean {
  */
 export const ALL_ACTIVITIES = [
   // Matrimonio
-  "Matrimonio", "Compromiso", "Propuesta", "Pedida", "Yerno", "Visita",
+  "Matrimonio", "Compromiso", "Pedida", "Consulta", "Yerno", "Visita",
   // Negocios
   "Inauguración", "Contrato", "Comercio", "Finanzas", "Almacén", "Envío", "Letrero",
   // Construcción
-  "Excavar", "Romper Tierra", "Renovar", "Cimientos", "Vigas", "Pilares", "Puertas", "Consagrar",
+  "Excavar", "Romper", "Renovar", "Cimientos", "Vigas", "Columnas", "Puertas", "Consagrar",
   // Hogar
   "Mudanza", "Traslado", "Cama", "Cocina", "Limpieza", "Propiedad",
   // Social
-  "Amigos", "Viaje", "Viaje Largo", "Banquete", "Empleo",
+  "Amigos", "Viaje", "ViajeLejos", "Banquete", "Cargo",
   // Ceremonias
-  "Ceremonias", "Oraciones", "Descendencia", "Ayuno", "Baño",
+  "Ceremonias", "Oraciones", "Heredero", "Ritual", "Baño",
   // Médico
   "Médico", "Tratamiento", "Acupuntura", "Medicina",
   // Funerario
-  "Entierro", "Exhumación", "Luto", "Duelo",
+  "Entierro", "Exhumación", "QuitarLuto", "Luto",
   // Agricultura
-  "Sembrar", "Pastoreo", "Ganado", "Caza", "Pesca",
+  "Sembrar", "Ganadería", "Animales", "Captura", "Caza",
   // Otros
-  "Ropa", "Ceremonia", "Corte Pelo", "Tumba", "Lápida", "Purificar", "Almacenar"
+  "Costura", "Coronación", "Corte", "Tumba", "Lápida", "Liberación", "Colección"
 ];
 
 /**
  * 活動分類
  */
 export const ACTIVITY_CATEGORIES: Record<string, string[]> = {
-  "Matrimonio": ["Matrimonio", "Compromiso", "Propuesta", "Pedida", "Yerno", "Visita"],
+  "Matrimonio": ["Matrimonio", "Compromiso", "Pedida", "Consulta", "Yerno", "Visita"],
   "Negocios": ["Inauguración", "Contrato", "Comercio", "Finanzas", "Almacén", "Envío", "Letrero"],
-  "Construcción": ["Excavar", "Romper Tierra", "Renovar", "Cimientos", "Vigas", "Pilares", "Puertas", "Consagrar"],
+  "Construcción": ["Excavar", "Romper", "Renovar", "Cimientos", "Vigas", "Columnas", "Puertas", "Consagrar"],
   "Hogar": ["Mudanza", "Traslado", "Cama", "Cocina", "Limpieza", "Propiedad"],
-  "Social": ["Amigos", "Viaje", "Viaje Largo", "Banquete", "Empleo"],
-  "Ceremonias": ["Ceremonias", "Oraciones", "Descendencia", "Ayuno", "Baño"],
+  "Social": ["Amigos", "Viaje", "ViajeLejos", "Banquete", "Cargo"],
+  "Ceremonias": ["Ceremonias", "Oraciones", "Heredero", "Ritual", "Baño"],
   "Médico": ["Médico", "Tratamiento", "Acupuntura", "Medicina"],
-  "Funerario": ["Entierro", "Exhumación", "Luto", "Duelo"],
-  "Agricultura": ["Sembrar", "Pastoreo", "Ganado", "Caza", "Pesca"],
-  "Otros": ["Ropa", "Ceremonia", "Corte Pelo", "Tumba", "Lápida", "Purificar", "Almacenar"]
+  "Funerario": ["Entierro", "Exhumación", "QuitarLuto", "Luto"],
+  "Agricultura": ["Sembrar", "Ganadería", "Animales", "Captura", "Caza"],
+  "Otros": ["Costura", "Coronación", "Corte", "Tumba", "Lápida", "Liberación", "Colección"]
 };
 
 /**
@@ -230,43 +230,43 @@ export const ACTIVITY_CATEGORIES: Record<string, string[]> = {
 export function getAuspiciousByJianChu(jianChu: string): { auspicious: string[], inauspicious: string[] } {
   const jianChuFortune: Record<string, { auspicious: string[], inauspicious: string[] }> = {
     "Jiàn": {
-      auspicious: ["Ceremonias", "Oraciones", "Viaje", "Excavar", "Amigos", "Vigas", "Consagrar", "Ganado"],
+      auspicious: ["Ceremonias", "Oraciones", "Viaje", "Excavar", "Amigos", "Vigas", "Consagrar", "Animales"],
       inauspicious: ["Inauguración", "Entierro", "Matrimonio", "Traslado"]
     },
     "Chú": {
-      auspicious: ["Purificar", "Baño", "Médico", "Tratamiento", "Limpieza", "Medicina"],
-      inauspicious: ["Matrimonio", "Viaje Largo", "Inauguración", "Comercio"]
+      auspicious: ["Liberación", "Baño", "Médico", "Tratamiento", "Limpieza", "Medicina"],
+      inauspicious: ["Matrimonio", "ViajeLejos", "Inauguración", "Comercio"]
     },
     "Mǎn": {
-      auspicious: ["Oraciones", "Matrimonio", "Mudanza", "Inauguración", "Finanzas", "Propuesta", "Traslado", "Propiedad"],
-      inauspicious: ["Excavar", "Medicina", "Romper Tierra"]
+      auspicious: ["Oraciones", "Matrimonio", "Mudanza", "Inauguración", "Finanzas", "Pedida", "Traslado", "Propiedad"],
+      inauspicious: ["Excavar", "Medicina", "Romper"]
     },
     "Píng": {
-      auspicious: ["Renovar", "Excavar", "Cama", "Ropa", "Corte Pelo"],
-      inauspicious: ["Oraciones", "Descendencia", "Matrimonio", "Inauguración"]
+      auspicious: ["Renovar", "Excavar", "Cama", "Costura", "Corte"],
+      inauspicious: ["Oraciones", "Heredero", "Matrimonio", "Inauguración"]
     },
     "Dìng": {
-      auspicious: ["Matrimonio", "Inauguración", "Comercio", "Contrato", "Compromiso", "Propuesta", "Amigos", "Propiedad"],
-      inauspicious: ["Litigio", "Viaje Largo", "Excavar"]
+      auspicious: ["Matrimonio", "Inauguración", "Comercio", "Contrato", "Compromiso", "Pedida", "Amigos", "Propiedad"],
+      inauspicious: ["ViajeLejos", "Excavar"]
     },
     "Zhí": {
-      auspicious: ["Ceremonias", "Caza", "Pesca", "Ganado", "Pastoreo"],
+      auspicious: ["Ceremonias", "Caza", "Captura", "Animales", "Ganadería"],
       inauspicious: ["Inauguración", "Comercio", "Matrimonio", "Traslado"]
     },
     "Pò": {
-      auspicious: ["Tratamiento", "Médico", "Romper Tierra", "Purificar"],
+      auspicious: ["Tratamiento", "Médico", "Romper", "Liberación"],
       inauspicious: ["Matrimonio", "Inauguración", "Comercio", "Oraciones", "Mudanza", "Traslado"]
     },
     "Wēi": {
-      auspicious: ["Cama", "Ceremonias", "Oraciones", "Baño", "Ayuno"],
-      inauspicious: ["Altura", "Viaje Largo", "Viaje", "Excavar", "Renovar"]
+      auspicious: ["Cama", "Ceremonias", "Oraciones", "Baño", "Ritual"],
+      inauspicious: ["ViajeLejos", "Viaje", "Excavar", "Renovar"]
     },
     "Chéng": {
       auspicious: ["Inauguración", "Matrimonio", "Mudanza", "Finanzas", "Contrato", "Comercio", "Propiedad", "Traslado", "Amigos"],
-      inauspicious: ["Litigio", "Excavar", "Entierro"]
+      inauspicious: ["Excavar", "Entierro"]
     },
     "Shōu": {
-      auspicious: ["Finanzas", "Mudanza", "Almacenar", "Ganado", "Pastoreo", "Sembrar"],
+      auspicious: ["Finanzas", "Mudanza", "Colección", "Animales", "Ganadería", "Sembrar"],
       inauspicious: ["Inauguración", "Excavar", "Viaje", "Matrimonio"]
     },
     "Kāi": {
@@ -274,7 +274,7 @@ export function getAuspiciousByJianChu(jianChu: string): { auspicious: string[],
       inauspicious: ["Entierro", "Médico"]
     },
     "Bì": {
-      auspicious: ["Entierro", "Almacenar", "Tumba", "Exhumación"],
+      auspicious: ["Entierro", "Colección", "Tumba", "Exhumación"],
       inauspicious: ["Inauguración", "Viaje", "Matrimonio", "Excavar", "Comercio", "Traslado"]
     }
   };

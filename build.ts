@@ -219,28 +219,95 @@ function generateStaticHTML(): string {
     <div class="card">
       <div class="card-title">Seleccionar Actividad para Ver Días Favorables</div>
       <div class="activity-selector">
-        <select id="activitySelect">
+        <select id="activitySelect" onchange="checkActivity()">
           <option value="">-- Seleccionar Actividad --</option>
-          <option value="Ceremonias">Ceremonias</option>
-          <option value="Oraciones">Oraciones</option>
-          <option value="Matrimonio">Matrimonio</option>
-          <option value="Inauguración">Inauguración</option>
-          <option value="Excavar">Construcción</option>
-          <option value="Renovar">Renovación</option>
-          <option value="Mudanza">Mudanza</option>
-          <option value="Viaje">Viaje</option>
-          <option value="Finanzas">Finanzas</option>
-          <option value="Entierro">Entierro</option>
+          <optgroup label="Matrimonio">
+            <option value="Matrimonio">Matrimonio</option>
+            <option value="Compromiso">Compromiso</option>
+            <option value="Pedida">Pedida de Mano</option>
+            <option value="Consulta">Consulta Nombre</option>
+            <option value="Yerno">Recibir Yerno</option>
+            <option value="Visita">Visita Familiar</option>
+          </optgroup>
+          <optgroup label="Negocios">
+            <option value="Inauguración">Inauguración</option>
+            <option value="Contrato">Firmar Contrato</option>
+            <option value="Comercio">Comercio</option>
+            <option value="Finanzas">Recibir Dinero</option>
+            <option value="Almacén">Abrir Almacén</option>
+            <option value="Envío">Envío Mercancía</option>
+            <option value="Letrero">Colocar Letrero</option>
+          </optgroup>
+          <optgroup label="Construcción">
+            <option value="Excavar">Excavar Tierra</option>
+            <option value="Romper">Romper Tierra</option>
+            <option value="Renovar">Renovar</option>
+            <option value="Cimientos">Poner Cimientos</option>
+            <option value="Vigas">Colocar Vigas</option>
+            <option value="Columnas">Levantar Columnas</option>
+            <option value="Puertas">Instalar Puertas</option>
+            <option value="Consagrar">Consagrar</option>
+          </optgroup>
+          <optgroup label="Hogar">
+            <option value="Mudanza">Mudanza</option>
+            <option value="Traslado">Traslado</option>
+            <option value="Cama">Instalar Cama</option>
+            <option value="Cocina">Instalar Cocina</option>
+            <option value="Limpieza">Limpieza Casa</option>
+            <option value="Propiedad">Comprar Propiedad</option>
+          </optgroup>
+          <optgroup label="Social">
+            <option value="Amigos">Reunir Amigos</option>
+            <option value="Viaje">Viaje</option>
+            <option value="ViajeLejos">Viaje Largo</option>
+            <option value="Banquete">Banquete</option>
+            <option value="Cargo">Asumir Cargo</option>
+          </optgroup>
+          <optgroup label="Ceremonias">
+            <option value="Ceremonias">Ceremonias</option>
+            <option value="Oraciones">Oraciones</option>
+            <option value="Heredero">Pedir Heredero</option>
+            <option value="Ritual">Ritual</option>
+            <option value="Baño">Baño Ritual</option>
+          </optgroup>
+          <optgroup label="Médico">
+            <option value="Médico">Consulta Médica</option>
+            <option value="Tratamiento">Tratamiento</option>
+            <option value="Acupuntura">Acupuntura</option>
+            <option value="Medicina">Tomar Medicina</option>
+          </optgroup>
+          <optgroup label="Funerario">
+            <option value="Entierro">Entierro</option>
+            <option value="Exhumación">Exhumación</option>
+            <option value="QuitarLuto">Quitar Luto</option>
+            <option value="Luto">Vestir Luto</option>
+          </optgroup>
+          <optgroup label="Agricultura">
+            <option value="Sembrar">Sembrar</option>
+            <option value="Ganadería">Ganadería</option>
+            <option value="Animales">Recibir Animales</option>
+            <option value="Captura">Captura</option>
+            <option value="Caza">Caza</option>
+          </optgroup>
+          <optgroup label="Otros">
+            <option value="Costura">Cortar Tela</option>
+            <option value="Coronación">Coronación</option>
+            <option value="Corte">Corte de Pelo</option>
+            <option value="Tumba">Reparar Tumba</option>
+            <option value="Lápida">Colocar Lápida</option>
+            <option value="Liberación">Liberación</option>
+            <option value="Colección">Colección</option>
+          </optgroup>
         </select>
         <button onclick="checkActivity()">Buscar</button>
       </div>
       <div class="quick-activities">
-        <button class="quick-btn" onclick="selectActivity('Ceremonias')">Ceremonias</button>
         <button class="quick-btn" onclick="selectActivity('Matrimonio')">Matrimonio</button>
-        <button class="quick-btn" onclick="selectActivity('Inauguración')">Inauguración</button>
-        <button class="quick-btn" onclick="selectActivity('Excavar')">Construcción</button>
+        <button class="quick-btn" onclick="selectActivity('Inauguración')">Negocios</button>
         <button class="quick-btn" onclick="selectActivity('Mudanza')">Mudanza</button>
         <button class="quick-btn" onclick="selectActivity('Viaje')">Viaje</button>
+        <button class="quick-btn" onclick="selectActivity('Ceremonias')">Ceremonias</button>
+        <button class="quick-btn" onclick="selectActivity('Entierro')">Funerario</button>
       </div>
     </div>
 
