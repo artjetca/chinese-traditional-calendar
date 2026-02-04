@@ -173,13 +173,13 @@ export function getClashZodiac(dayZhiIndex: number): string {
  */
 export function getShaDirection(dayZhiIndex: number): string {
   // 寅午戌日煞北
-  if ([2, 6, 10].includes(dayZhiIndex)) return "北方";
+  if ([2, 6, 10].includes(dayZhiIndex)) return "Norte";
   // 申子辰日煞南
-  if ([8, 0, 4].includes(dayZhiIndex)) return "南方";
+  if ([8, 0, 4].includes(dayZhiIndex)) return "Sur";
   // 亥卯未日煞西
-  if ([11, 3, 7].includes(dayZhiIndex)) return "西方";
+  if ([11, 3, 7].includes(dayZhiIndex)) return "Oeste";
   // 巳酉丑日煞東
-  if ([5, 9, 1].includes(dayZhiIndex)) return "東方";
+  if ([5, 9, 1].includes(dayZhiIndex)) return "Este";
   return "";
 }
 

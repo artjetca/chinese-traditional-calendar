@@ -432,11 +432,67 @@ function generateStaticHTML(): string {
     // Get URL params
     const urlParams = new URLSearchParams(window.location.search);
     selectedActivity = urlParams.get('activity') || '';
+    const dateParam = urlParams.get('date');
+    
     if (selectedActivity) {
       document.getElementById('activitySelect').value = selectedActivity;
     }
 
-    updateHourPillar();
+    // Load day info from URL date parameter
+    function loadDayInfo(dateStr) {
+      fetch('/api/day?date=' + dateStr)
+        .then(r => r.json())
+        .then(data => {
+          // Update main date
+          document.getElementById('mainDate').textContent = data.gregorianDate + ' ' + data.weekday;
+          document.getElementById('lunarDate').textContent = 'Año Lunar ' + data.lunarYear + ' - ' + data.lunarMonthName + ' ' + data.lunarDayName;
+          
+          // Update GanZhi
+          const ganzhiRow = document.getElementById('ganzhiRow');
+          ganzhiRow.innerHTML = \`
+            <div class="ganzhi-item"><div class="ganzhi-label">Pilar Año</div><div class="ganzhi-value">\${data.yearGanZhi}</div><div class="ganzhi-nayin">\${data.yearNaYin}</div></div>
+            <div class="ganzhi-item"><div class="ganzhi-label">Pilar Mes</div><div class="ganzhi-value">\${data.monthGanZhi}</div><div class="ganzhi-nayin">\${data.monthNaYin}</div></div>
+            <div class="ganzhi-item"><div class="ganzhi-label">Pilar Día</div><div class="ganzhi-value">\${data.dayGanZhi}</div><div class="ganzhi-nayin">\${data.dayNaYin}</div></div>
+            <div class="ganzhi-item"><div class="ganzhi-label">Pilar Hora</div><div class="ganzhi-value" id="hourGanZhi">\${data.hourlyFortune[Math.floor((new Date().getHours() + 1) % 24 / 2)]?.ganZhi || '—'}</div><div class="ganzhi-nayin">Actual</div></div>
+          \`;
+          
+          // Update basic info
+          document.getElementById('infoGrid').innerHTML = \`
+            <div class="info-item"><div class="info-label">Zodiaco</div><div class="info-value">\${data.zodiac}</div></div>
+            <div class="info-item"><div class="info-label">JianChu</div><div class="info-value">\${data.jianChu}</div></div>
+            <div class="info-item"><div class="info-label">Conflicto</div><div class="info-value">\${data.clash}</div></div>
+            <div class="info-item"><div class="info-label">Sha</div><div class="info-value">\${data.shaDirection}</div></div>
+          \`;
+          
+          // Update Yi/Ji
+          document.getElementById('yiJi').innerHTML = \`
+            <div class="yi"><div class="yi-title">✓ Favorable</div><div class="yi-list">\${data.auspicious.join(', ') || 'Ninguno'}</div></div>
+            <div class="ji"><div class="ji-title">✗ Desfavorable</div><div class="ji-list">\${data.inauspicious.join(', ') || 'Ninguno'}</div></div>
+          \`;
+          
+          // Update hourly fortune
+          document.getElementById('hourlyGrid').innerHTML = data.hourlyFortune.map(h => {
+            const color = h.fortune === 'Bueno' ? '#22c55e' : h.fortune === 'Malo' ? '#ef4444' : '#6b7280';
+            const icon = h.fortune === 'Bueno' ? '☆' : h.fortune === 'Malo' ? '●' : '○';
+            return '<div class="hour-item" style="border-left: 3px solid '+color+'"><span class="hour-icon">'+icon+'</span><strong>'+h.hourName+'</strong> '+h.ganZhi+'<span class="hour-time">'+h.timeRange+'</span><span class="hour-fortune" style="color:'+color+'">'+h.fortune+'</span></div>';
+          }).join('');
+          
+          // Update date picker
+          document.getElementById('datePicker').value = dateStr;
+          
+          // Update calendar to show selected month
+          const [y, m] = dateStr.split('-').map(Number);
+          currentYear = y;
+          currentMonth = m;
+          updateCalendar();
+        });
+    }
+
+    if (dateParam) {
+      loadDayInfo(dateParam);
+    } else {
+      updateHourPillar();
+    }
     setInterval(updateHourPillar, 60000);
   </script>
 </body>
