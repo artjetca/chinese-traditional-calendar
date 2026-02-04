@@ -92,10 +92,8 @@ function calculateHourFortune(
   hourIndex: number,
   hourGanZhi: string
 ): FortuneLevel {
-  const parsed = parseGanZhi(hourGanZhi);
-  if (!parsed) return "Neutral";
-
-  const hourZhiIndex = parsed.zhiIndex;
+  // hourIndex directly corresponds to the Earthly Branch index (Zǐ=0, Chǒu=1, etc.)
+  const hourZhiIndex = hourIndex;
 
   // 規則1：時辰與日支相沖為凶
   if (isClash(dayZhiIndex, hourZhiIndex)) {
