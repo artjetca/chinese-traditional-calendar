@@ -3,39 +3,39 @@
  */
 
 // 十天干
-export const HEAVENLY_STEMS = ["甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬", "癸"] as const;
+export const HEAVENLY_STEMS = ["Jiǎ", "Yǐ", "Bǐng", "Dīng", "Wù", "Jǐ", "Gēng", "Xīn", "Rén", "Guǐ"] as const;
 
 // 十二地支
-export const EARTHLY_BRANCHES = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"] as const;
+export const EARTHLY_BRANCHES = ["Zǐ", "Chǒu", "Yín", "Mǎo", "Chén", "Sì", "Wǔ", "Wèi", "Shēn", "Yǒu", "Xū", "Hài"] as const;
 
 // 十二生肖
 export const ZODIAC_ANIMALS = ["Rata", "Buey", "Tigre", "Conejo", "Dragón", "Serpiente", "Caballo", "Cabra", "Mono", "Gallo", "Perro", "Cerdo"] as const;
 
 // 五行
-export const FIVE_ELEMENTS = ["木", "火", "土", "金", "水"] as const;
+export const FIVE_ELEMENTS = ["Madera", "Fuego", "Tierra", "Metal", "Agua"] as const;
 
 // 建除十二神
-export const JIAN_CHU = ["建", "除", "滿", "平", "定", "執", "破", "危", "成", "收", "開", "閉"] as const;
+export const JIAN_CHU = ["Jiàn", "Chú", "Mǎn", "Píng", "Dìng", "Zhí", "Pò", "Wēi", "Chéng", "Shōu", "Kāi", "Bì"] as const;
 
 // 二十四節氣
 export const SOLAR_TERMS = [
-  "小寒", "大寒", "立春", "雨水", "驚蟄", "春分",
-  "清明", "穀雨", "立夏", "小滿", "芒種", "夏至",
-  "小暑", "大暑", "立秋", "處暑", "白露", "秋分",
-  "寒露", "霜降", "立冬", "小雪", "大雪", "冬至"
+  "Pequeño Frío", "Gran Frío", "Inicio Primavera", "Agua de Lluvia", "Despertar Insectos", "Equinoccio Primavera",
+  "Luz Pura", "Lluvia de Granos", "Inicio Verano", "Pequeña Plenitud", "Granos en Espiga", "Solsticio Verano",
+  "Pequeño Calor", "Gran Calor", "Inicio Otoño", "Fin del Calor", "Rocío Blanco", "Equinoccio Otoño",
+  "Rocío Frío", "Descenso Escarcha", "Inicio Invierno", "Pequeña Nieve", "Gran Nieve", "Solsticio Invierno"
 ] as const;
 
 // 農曆月份名稱
 export const LUNAR_MONTH_NAMES = [
-  "正月", "二月", "三月", "四月", "五月", "六月",
-  "七月", "八月", "九月", "十月", "十一月", "十二月"
+  "Mes 1", "Mes 2", "Mes 3", "Mes 4", "Mes 5", "Mes 6",
+  "Mes 7", "Mes 8", "Mes 9", "Mes 10", "Mes 11", "Mes 12"
 ] as const;
 
 // 農曆日期名稱
 export const LUNAR_DAY_NAMES = [
-  "初一", "初二", "初三", "初四", "初五", "初六", "初七", "初八", "初九", "初十",
-  "十一", "十二", "十三", "十四", "十五", "十六", "十七", "十八", "十九", "二十",
-  "廿一", "廿二", "廿三", "廿四", "廿五", "廿六", "廿七", "廿八", "廿九", "三十"
+  "Día 1", "Día 2", "Día 3", "Día 4", "Día 5", "Día 6", "Día 7", "Día 8", "Día 9", "Día 10",
+  "Día 11", "Día 12", "Día 13", "Día 14", "Día 15", "Día 16", "Día 17", "Día 18", "Día 19", "Día 20",
+  "Día 21", "Día 22", "Día 23", "Día 24", "Día 25", "Día 26", "Día 27", "Día 28", "Día 29", "Día 30"
 ] as const;
 
 // 時辰名稱
@@ -78,36 +78,36 @@ export const CLASH_PAIRS: Record<number, number> = {
 
 // 六十甲子納音表
 export const SIXTY_JIAZI_NAYIN: Record<string, string> = {
-  "甲子": "海中金", "乙丑": "海中金",
-  "丙寅": "爐中火", "丁卯": "爐中火",
-  "戊辰": "大林木", "己巳": "大林木",
-  "庚午": "路旁土", "辛未": "路旁土",
-  "壬申": "劍鋒金", "癸酉": "劍鋒金",
-  "甲戌": "山頭火", "乙亥": "山頭火",
-  "丙子": "澗下水", "丁丑": "澗下水",
-  "戊寅": "城頭土", "己卯": "城頭土",
-  "庚辰": "白蠟金", "辛巳": "白蠟金",
-  "壬午": "楊柳木", "癸未": "楊柳木",
-  "甲申": "泉中水", "乙酉": "泉中水",
-  "丙戌": "屋上土", "丁亥": "屋上土",
-  "戊子": "霹靂火", "己丑": "霹靂火",
-  "庚寅": "松柏木", "辛卯": "松柏木",
-  "壬辰": "長流水", "癸巳": "長流水",
-  "甲午": "砂石金", "乙未": "砂石金",
-  "丙申": "山下火", "丁酉": "山下火",
-  "戊戌": "平地木", "己亥": "平地木",
-  "庚子": "壁上土", "辛丑": "壁上土",
-  "壬寅": "金箔金", "癸卯": "金箔金",
-  "甲辰": "覆燈火", "乙巳": "佛燈火",
-  "丙午": "天河水", "丁未": "天河水",
-  "戊申": "大驛土", "己酉": "大驛土",
-  "庚戌": "釵釧金", "辛亥": "釵釧金",
-  "壬子": "桑柘木", "癸丑": "桑柘木",
-  "甲寅": "大溪水", "乙卯": "大溪水",
-  "丙辰": "砂中土", "丁巳": "砂中土",
-  "戊午": "天上火", "己未": "天上火",
-  "庚申": "石榴木", "辛酉": "石榴木",
-  "壬戌": "大海水", "癸亥": "大海水"
+  "JiǎZǐ": "Metal en Mar", "YǐChǒu": "Metal en Mar",
+  "BǐngYín": "Fuego en Horno", "DīngMǎo": "Fuego en Horno",
+  "WùChén": "Madera Gran Bosque", "JǐSì": "Madera Gran Bosque",
+  "GēngWǔ": "Tierra de Camino", "XīnWèi": "Tierra de Camino",
+  "RénShēn": "Metal de Espada", "GuǐYǒu": "Metal de Espada",
+  "JiǎXū": "Fuego de Montaña", "YǐHài": "Fuego de Montaña",
+  "BǐngZǐ": "Agua de Arroyo", "DīngChǒu": "Agua de Arroyo",
+  "WùYín": "Tierra de Muralla", "JǐMǎo": "Tierra de Muralla",
+  "GēngChén": "Metal de Cera", "XīnSì": "Metal de Cera",
+  "RénWǔ": "Madera de Sauce", "GuǐWèi": "Madera de Sauce",
+  "JiǎShēn": "Agua de Fuente", "YǐYǒu": "Agua de Fuente",
+  "BǐngXū": "Tierra de Techo", "DīngHài": "Tierra de Techo",
+  "WùZǐ": "Fuego de Trueno", "JǐChǒu": "Fuego de Trueno",
+  "GēngYín": "Madera de Pino", "XīnMǎo": "Madera de Pino",
+  "RénChén": "Agua de Río", "GuǐSì": "Agua de Río",
+  "JiǎWǔ": "Metal de Arena", "YǐWèi": "Metal de Arena",
+  "BǐngShēn": "Fuego Bajo Montaña", "DīngYǒu": "Fuego Bajo Montaña",
+  "WùXū": "Madera de Llanura", "JǐHài": "Madera de Llanura",
+  "GēngZǐ": "Tierra de Pared", "XīnChǒu": "Tierra de Pared",
+  "RénYín": "Metal Dorado", "GuǐMǎo": "Metal Dorado",
+  "JiǎChén": "Fuego de Lámpara", "YǐSì": "Fuego de Lámpara",
+  "BǐngWǔ": "Agua Celestial", "DīngWèi": "Agua Celestial",
+  "WùShēn": "Tierra de Posta", "JǐYǒu": "Tierra de Posta",
+  "GēngXū": "Metal de Horquilla", "XīnHài": "Metal de Horquilla",
+  "RénZǐ": "Madera de Morera", "GuǐChǒu": "Madera de Morera",
+  "JiǎYín": "Agua de Río Grande", "YǐMǎo": "Agua de Río Grande",
+  "BǐngChén": "Tierra de Arena", "DīngSì": "Tierra de Arena",
+  "WùWǔ": "Fuego Celestial", "JǐWèi": "Fuego Celestial",
+  "GēngShēn": "Madera de Granada", "XīnYǒu": "Madera de Granada",
+  "RénXū": "Agua de Océano", "GuǐHài": "Agua de Océano"
 };
 
 // 宜忌事項列表

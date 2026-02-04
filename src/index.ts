@@ -93,7 +93,7 @@ export interface FullDayInfo {
   hourlyFortune: HourlyFortuneInfo[];
 }
 
-const WEEKDAY_NAMES = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+const WEEKDAY_NAMES = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
 
 /**
  * 獲取某日期的完整信息
@@ -217,7 +217,7 @@ export function formatDayInfo(info: FullDayInfo): string {
 
   lines.push(`\n【時辰吉凶】`);
   for (const hour of info.hourlyFortune) {
-    const symbol = hour.fortune === '吉' ? '☆' : hour.fortune === '凶' ? '●' : '○';
+    const symbol = hour.fortune === 'Bueno' ? '☆' : hour.fortune === 'Malo' ? '●' : '○';
     lines.push(`  ${symbol} ${hour.hourName} ${hour.ganZhi} (${hour.timeRange}) - ${hour.fortune}`);
   }
 

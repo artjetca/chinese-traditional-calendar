@@ -110,12 +110,12 @@ export function generateCalendarHTML(year: number, month: number, selectedActivi
     let activityBadge = '';
     if (selectedActivity) {
       const result = isActivityAuspicious(day.jianChu, selectedActivity);
-      if (result === '宜') {
+      if (result === 'Fav') {
         cls += ' activity-yi';
-        activityBadge = `<div class="activity-badge yi">✓ 宜${selectedActivity}</div>`;
-      } else if (result === '忌') {
+        activityBadge = `<div class="activity-badge yi">✓ ${selectedActivity}</div>`;
+      } else if (result === 'Desf') {
         cls += ' activity-ji';
-        activityBadge = `<div class="activity-badge ji">✗ 忌${selectedActivity}</div>`;
+        activityBadge = `<div class="activity-badge ji">✗ ${selectedActivity}</div>`;
       }
     }
     
@@ -125,7 +125,7 @@ export function generateCalendarHTML(year: number, month: number, selectedActivi
       ${day.solarTerm ? `<div class="trad-term">${day.solarTerm}</div>` : ''}
       <div class="trad-date">${day.day}</div>
       <div class="trad-lunar">${lunarDisplay}</div>
-      <div class="trad-clash">沖${day.clash}</div>
+      <div class="trad-clash">${day.clash}</div>
       <div class="trad-activities">${day.auspicious.slice(0, 2).join(' ')}</div>
       ${activityBadge}
     </div>`;

@@ -188,42 +188,42 @@ function isHeiDaoHour(dayZhiIndex: number, hourIndex: number): boolean {
  * 所有活動類別
  */
 export const ALL_ACTIVITIES = [
-  // 婚姻類
-  "嫁娶", "訂盟", "納采", "問名", "納婿", "歸寧",
-  // 事業類
-  "開市", "立約", "交易", "納財", "開倉", "出貨", "掛匾",
-  // 建築類
-  "動土", "破土", "修造", "起基", "上樑", "豎柱", "安門", "開光",
-  // 居家類
-  "入宅", "移徙", "安床", "安灶", "掃舍", "置產",
-  // 社交類
-  "會友", "出行", "遠行", "宴會", "赴任",
-  // 祭祀類
-  "祭祀", "祈福", "求嗣", "齋醮", "沐浴",
-  // 醫療類
-  "求醫", "治病", "針灸", "服藥",
-  // 喪葬類
-  "安葬", "啟攢", "除服", "成服",
-  // 農牧類
-  "栽種", "牧養", "納畜", "捕捉", "畋獵",
-  // 其他
-  "裁衣", "冠笄", "理髮", "修墳", "立碑", "解除", "收藏"
+  // Matrimonio
+  "Matrimonio", "Compromiso", "Propuesta", "Pedida", "Yerno", "Visita",
+  // Negocios
+  "Inauguración", "Contrato", "Comercio", "Finanzas", "Almacén", "Envío", "Letrero",
+  // Construcción
+  "Excavar", "Romper Tierra", "Renovar", "Cimientos", "Vigas", "Pilares", "Puertas", "Consagrar",
+  // Hogar
+  "Mudanza", "Traslado", "Cama", "Cocina", "Limpieza", "Propiedad",
+  // Social
+  "Amigos", "Viaje", "Viaje Largo", "Banquete", "Empleo",
+  // Ceremonias
+  "Ceremonias", "Oraciones", "Descendencia", "Ayuno", "Baño",
+  // Médico
+  "Médico", "Tratamiento", "Acupuntura", "Medicina",
+  // Funerario
+  "Entierro", "Exhumación", "Luto", "Duelo",
+  // Agricultura
+  "Sembrar", "Pastoreo", "Ganado", "Caza", "Pesca",
+  // Otros
+  "Ropa", "Ceremonia", "Corte Pelo", "Tumba", "Lápida", "Purificar", "Almacenar"
 ];
 
 /**
  * 活動分類
  */
 export const ACTIVITY_CATEGORIES: Record<string, string[]> = {
-  "婚姻": ["嫁娶", "訂盟", "納采", "問名", "納婿", "歸寧"],
-  "事業": ["開市", "立約", "交易", "納財", "開倉", "出貨", "掛匾"],
-  "建築": ["動土", "破土", "修造", "起基", "上樑", "豎柱", "安門", "開光"],
-  "居家": ["入宅", "移徙", "安床", "安灶", "掃舍", "置產"],
-  "社交": ["會友", "出行", "遠行", "宴會", "赴任"],
-  "祭祀": ["祭祀", "祈福", "求嗣", "齋醮", "沐浴"],
-  "醫療": ["求醫", "治病", "針灸", "服藥"],
-  "喪葬": ["安葬", "啟攢", "除服", "成服"],
-  "農牧": ["栽種", "牧養", "納畜", "捕捉", "畋獵"],
-  "其他": ["裁衣", "冠笄", "理髮", "修墳", "立碑", "解除", "收藏"]
+  "Matrimonio": ["Matrimonio", "Compromiso", "Propuesta", "Pedida", "Yerno", "Visita"],
+  "Negocios": ["Inauguración", "Contrato", "Comercio", "Finanzas", "Almacén", "Envío", "Letrero"],
+  "Construcción": ["Excavar", "Romper Tierra", "Renovar", "Cimientos", "Vigas", "Pilares", "Puertas", "Consagrar"],
+  "Hogar": ["Mudanza", "Traslado", "Cama", "Cocina", "Limpieza", "Propiedad"],
+  "Social": ["Amigos", "Viaje", "Viaje Largo", "Banquete", "Empleo"],
+  "Ceremonias": ["Ceremonias", "Oraciones", "Descendencia", "Ayuno", "Baño"],
+  "Médico": ["Médico", "Tratamiento", "Acupuntura", "Medicina"],
+  "Funerario": ["Entierro", "Exhumación", "Luto", "Duelo"],
+  "Agricultura": ["Sembrar", "Pastoreo", "Ganado", "Caza", "Pesca"],
+  "Otros": ["Ropa", "Ceremonia", "Corte Pelo", "Tumba", "Lápida", "Purificar", "Almacenar"]
 };
 
 /**
@@ -231,53 +231,53 @@ export const ACTIVITY_CATEGORIES: Record<string, string[]> = {
  */
 export function getAuspiciousByJianChu(jianChu: string): { auspicious: string[], inauspicious: string[] } {
   const jianChuFortune: Record<string, { auspicious: string[], inauspicious: string[] }> = {
-    "建": {
-      auspicious: ["祭祀", "祈福", "出行", "動土", "會友", "上樑", "開光", "納畜"],
-      inauspicious: ["開市", "安葬", "嫁娶", "移徙"]
+    "Jiàn": {
+      auspicious: ["Ceremonias", "Oraciones", "Viaje", "Excavar", "Amigos", "Vigas", "Consagrar", "Ganado"],
+      inauspicious: ["Inauguración", "Entierro", "Matrimonio", "Traslado"]
     },
-    "除": {
-      auspicious: ["解除", "沐浴", "求醫", "治病", "掃舍", "服藥"],
-      inauspicious: ["嫁娶", "遠行", "開市", "交易"]
+    "Chú": {
+      auspicious: ["Purificar", "Baño", "Médico", "Tratamiento", "Limpieza", "Medicina"],
+      inauspicious: ["Matrimonio", "Viaje Largo", "Inauguración", "Comercio"]
     },
-    "滿": {
-      auspicious: ["祈福", "嫁娶", "入宅", "開市", "納財", "納采", "移徙", "置產"],
-      inauspicious: ["動土", "服藥", "破土"]
+    "Mǎn": {
+      auspicious: ["Oraciones", "Matrimonio", "Mudanza", "Inauguración", "Finanzas", "Propuesta", "Traslado", "Propiedad"],
+      inauspicious: ["Excavar", "Medicina", "Romper Tierra"]
     },
-    "平": {
-      auspicious: ["修造", "動土", "安床", "裁衣", "理髮"],
-      inauspicious: ["祈福", "求嗣", "嫁娶", "開市"]
+    "Píng": {
+      auspicious: ["Renovar", "Excavar", "Cama", "Ropa", "Corte Pelo"],
+      inauspicious: ["Oraciones", "Descendencia", "Matrimonio", "Inauguración"]
     },
-    "定": {
-      auspicious: ["嫁娶", "開市", "交易", "立約", "訂盟", "納采", "會友", "置產"],
-      inauspicious: ["訴訟", "遠行", "動土"]
+    "Dìng": {
+      auspicious: ["Matrimonio", "Inauguración", "Comercio", "Contrato", "Compromiso", "Propuesta", "Amigos", "Propiedad"],
+      inauspicious: ["Litigio", "Viaje Largo", "Excavar"]
     },
-    "執": {
-      auspicious: ["祭祀", "捕捉", "畋獵", "納畜", "牧養"],
-      inauspicious: ["開市", "交易", "嫁娶", "移徙"]
+    "Zhí": {
+      auspicious: ["Ceremonias", "Caza", "Pesca", "Ganado", "Pastoreo"],
+      inauspicious: ["Inauguración", "Comercio", "Matrimonio", "Traslado"]
     },
-    "破": {
-      auspicious: ["治病", "求醫", "破土", "解除"],
-      inauspicious: ["嫁娶", "開市", "交易", "祈福", "入宅", "移徙"]
+    "Pò": {
+      auspicious: ["Tratamiento", "Médico", "Romper Tierra", "Purificar"],
+      inauspicious: ["Matrimonio", "Inauguración", "Comercio", "Oraciones", "Mudanza", "Traslado"]
     },
-    "危": {
-      auspicious: ["安床", "祭祀", "祈福", "沐浴", "齋醮"],
-      inauspicious: ["登高", "遠行", "出行", "動土", "修造"]
+    "Wēi": {
+      auspicious: ["Cama", "Ceremonias", "Oraciones", "Baño", "Ayuno"],
+      inauspicious: ["Altura", "Viaje Largo", "Viaje", "Excavar", "Renovar"]
     },
-    "成": {
-      auspicious: ["開市", "嫁娶", "入宅", "納財", "立約", "交易", "置產", "移徙", "會友"],
-      inauspicious: ["訴訟", "動土", "安葬"]
+    "Chéng": {
+      auspicious: ["Inauguración", "Matrimonio", "Mudanza", "Finanzas", "Contrato", "Comercio", "Propiedad", "Traslado", "Amigos"],
+      inauspicious: ["Litigio", "Excavar", "Entierro"]
     },
-    "收": {
-      auspicious: ["納財", "入宅", "收藏", "納畜", "牧養", "栽種"],
-      inauspicious: ["開市", "動土", "出行", "嫁娶"]
+    "Shōu": {
+      auspicious: ["Finanzas", "Mudanza", "Almacenar", "Ganado", "Pastoreo", "Sembrar"],
+      inauspicious: ["Inauguración", "Excavar", "Viaje", "Matrimonio"]
     },
-    "開": {
-      auspicious: ["開市", "動土", "開光", "嫁娶", "出行", "移徙", "入宅", "交易", "立約", "會友"],
-      inauspicious: ["安葬", "求醫"]
+    "Kāi": {
+      auspicious: ["Inauguración", "Excavar", "Consagrar", "Matrimonio", "Viaje", "Traslado", "Mudanza", "Comercio", "Contrato", "Amigos"],
+      inauspicious: ["Entierro", "Médico"]
     },
-    "閉": {
-      auspicious: ["安葬", "收藏", "修墳", "啟攢"],
-      inauspicious: ["開市", "出行", "嫁娶", "動土", "交易", "移徙"]
+    "Bì": {
+      auspicious: ["Entierro", "Almacenar", "Tumba", "Exhumación"],
+      inauspicious: ["Inauguración", "Viaje", "Matrimonio", "Excavar", "Comercio", "Traslado"]
     }
   };
 
@@ -287,11 +287,11 @@ export function getAuspiciousByJianChu(jianChu: string): { auspicious: string[],
 /**
  * 查詢特定活動在某日是否適宜
  */
-export function isActivityAuspicious(jianChu: string, activity: string): "宜" | "忌" | "平" {
+export function isActivityAuspicious(jianChu: string, activity: string): "Fav" | "Desf" | "Neut" {
   const fortune = getAuspiciousByJianChu(jianChu);
-  if (fortune.auspicious.includes(activity)) return "宜";
-  if (fortune.inauspicious.includes(activity)) return "忌";
-  return "平";
+  if (fortune.auspicious.includes(activity)) return "Fav";
+  if (fortune.inauspicious.includes(activity)) return "Desf";
+  return "Neut";
 }
 
 /**

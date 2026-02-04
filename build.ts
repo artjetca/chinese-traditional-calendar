@@ -155,7 +155,7 @@ function generateStaticHTML(): string {
     <div class="card" id="mainCard">
       <div class="card-title">Información de Fecha</div>
       <div class="main-date" id="mainDate">${info.gregorianDate} ${info.weekday}</div>
-      <div class="lunar-date" id="lunarDate">${info.lunarYear}年 ${info.lunarMonthName} ${info.lunarDayName}</div>
+      <div class="lunar-date" id="lunarDate">Año Lunar ${info.lunarYear} - ${info.lunarMonthName} ${info.lunarDayName}</div>
       <div class="ganzhi-row" id="ganzhiRow">
         <div class="ganzhi-item">
           <div class="ganzhi-label">Pilar Año</div>
@@ -185,19 +185,19 @@ function generateStaticHTML(): string {
       <div class="info-grid" id="infoGrid">
         <div class="info-item">
           <div class="info-label">Zodiaco</div>
-          <div class="info-value">${info.zodiac}年</div>
+          <div class="info-value">${info.zodiac}</div>
         </div>
         <div class="info-item">
           <div class="info-label">JianChu</div>
-          <div class="info-value">${info.jianChu}日</div>
+          <div class="info-value">${info.jianChu}</div>
         </div>
         <div class="info-item">
           <div class="info-label">Conflicto</div>
-          <div class="info-value">沖${info.clash}</div>
+          <div class="info-value">${info.clash}</div>
         </div>
         <div class="info-item">
           <div class="info-label">Sha</div>
-          <div class="info-value">煞${info.shaDirection}</div>
+          <div class="info-value">${info.shaDirection}</div>
         </div>
       </div>
     </div>
@@ -207,11 +207,11 @@ function generateStaticHTML(): string {
       <div class="yi-ji" id="yiJi">
         <div class="yi">
           <div class="yi-title">✓ Favorable</div>
-          <div class="yi-list">${info.auspicious.join('、') || '無'}</div>
+          <div class="yi-list">${info.auspicious.join(', ') || 'Ninguno'}</div>
         </div>
         <div class="ji">
           <div class="ji-title">✗ Desfavorable</div>
-          <div class="ji-list">${info.inauspicious.join('、') || '無'}</div>
+          <div class="ji-list">${info.inauspicious.join(', ') || 'Ninguno'}</div>
         </div>
       </div>
     </div>
@@ -221,26 +221,26 @@ function generateStaticHTML(): string {
       <div class="activity-selector">
         <select id="activitySelect">
           <option value="">-- Seleccionar Actividad --</option>
-          <option value="祭祀">Ceremonias</option>
-          <option value="祈福">Oraciones</option>
-          <option value="嫁娶">Matrimonio</option>
-          <option value="開市">Inauguración</option>
-          <option value="動土">Construcción</option>
-          <option value="修造">Renovación</option>
-          <option value="入宅">Mudanza</option>
-          <option value="出行">Viaje</option>
-          <option value="納財">Finanzas</option>
-          <option value="安葬">Entierro</option>
+          <option value="Ceremonias">Ceremonias</option>
+          <option value="Oraciones">Oraciones</option>
+          <option value="Matrimonio">Matrimonio</option>
+          <option value="Inauguración">Inauguración</option>
+          <option value="Excavar">Construcción</option>
+          <option value="Renovar">Renovación</option>
+          <option value="Mudanza">Mudanza</option>
+          <option value="Viaje">Viaje</option>
+          <option value="Finanzas">Finanzas</option>
+          <option value="Entierro">Entierro</option>
         </select>
         <button onclick="checkActivity()">Buscar</button>
       </div>
       <div class="quick-activities">
-        <button class="quick-btn" onclick="selectActivity('祭祀')">Ceremonias</button>
-        <button class="quick-btn" onclick="selectActivity('嫁娶')">Matrimonio</button>
-        <button class="quick-btn" onclick="selectActivity('開市')">Inauguración</button>
-        <button class="quick-btn" onclick="selectActivity('動土')">Construcción</button>
-        <button class="quick-btn" onclick="selectActivity('入宅')">Mudanza</button>
-        <button class="quick-btn" onclick="selectActivity('出行')">Viaje</button>
+        <button class="quick-btn" onclick="selectActivity('Ceremonias')">Ceremonias</button>
+        <button class="quick-btn" onclick="selectActivity('Matrimonio')">Matrimonio</button>
+        <button class="quick-btn" onclick="selectActivity('Inauguración')">Inauguración</button>
+        <button class="quick-btn" onclick="selectActivity('Excavar')">Construcción</button>
+        <button class="quick-btn" onclick="selectActivity('Mudanza')">Mudanza</button>
+        <button class="quick-btn" onclick="selectActivity('Viaje')">Viaje</button>
       </div>
     </div>
 
@@ -338,7 +338,7 @@ function generateStaticHTML(): string {
           body.innerHTML = \`
             <div class="modal-section">
               <div class="modal-section-title">Calendario Lunar</div>
-              <div class="modal-lunar">\${data.lunarYear}年 \${data.lunarMonthName} \${data.lunarDayName}</div>
+              <div class="modal-lunar">Año \${data.lunarYear} - \${data.lunarMonthName} \${data.lunarDayName}</div>
             </div>
             <div class="modal-section">
               <div class="modal-section-title">Cuatro Pilares</div>
@@ -352,17 +352,17 @@ function generateStaticHTML(): string {
             <div class="modal-section">
               <div class="modal-section-title">Favorable / Desfavorable</div>
               <div class="modal-yi-ji">
-                <div class="modal-yi"><div class="modal-yi-title">✓ Favorable</div><div class="modal-yi-list">\${data.auspicious.join('、') || '無'}</div></div>
-                <div class="modal-ji"><div class="modal-ji-title">✗ Desfavorable</div><div class="modal-ji-list">\${data.inauspicious.join('、') || '無'}</div></div>
+                <div class="modal-yi"><div class="modal-yi-title">✓ Favorable</div><div class="modal-yi-list">\${data.auspicious.join(', ') || 'Ninguno'}</div></div>
+                <div class="modal-ji"><div class="modal-ji-title">✗ Desfavorable</div><div class="modal-ji-list">\${data.inauspicious.join(', ') || 'Ninguno'}</div></div>
               </div>
             </div>
             <div class="modal-section">
               <div class="modal-section-title">Otra Información</div>
               <div class="modal-info-grid">
-                <div class="modal-info-item"><div class="modal-info-label">Zodiaco</div><div class="modal-info-value">\${data.zodiac}年</div></div>
-                <div class="modal-info-item"><div class="modal-info-label">JianChu</div><div class="modal-info-value">\${data.jianChu}日</div></div>
-                <div class="modal-info-item"><div class="modal-info-label">Conflicto</div><div class="modal-info-value">沖\${data.clash}</div></div>
-                <div class="modal-info-item"><div class="modal-info-label">Sha</div><div class="modal-info-value">煞\${data.shaDirection}</div></div>
+                <div class="modal-info-item"><div class="modal-info-label">Zodiaco</div><div class="modal-info-value">\${data.zodiac}</div></div>
+                <div class="modal-info-item"><div class="modal-info-label">JianChu</div><div class="modal-info-value">\${data.jianChu}</div></div>
+                <div class="modal-info-item"><div class="modal-info-label">Conflicto</div><div class="modal-info-value">\${data.clash}</div></div>
+                <div class="modal-info-item"><div class="modal-info-label">Sha</div><div class="modal-info-value">\${data.shaDirection}</div></div>
                 \${data.solarTerm ? '<div class="modal-info-item"><div class="modal-info-label">Término Solar</div><div class="modal-info-value">' + data.solarTerm + '</div></div>' : ''}
               </div>
             </div>
