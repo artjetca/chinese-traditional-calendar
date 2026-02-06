@@ -85,6 +85,10 @@ function generateStaticHTML(): string {
     .hour-icon { font-size: 16px; }
     .hour-time { font-size: 11px; color: #94a3b8; margin-left: auto; }
     .hour-fortune { font-weight: bold; min-width: 20px; text-align: right; }
+    .date-picker input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(14%) sepia(98%) saturate(6247%) hue-rotate(358deg) brightness(94%) contrast(118%);
+      opacity: 1;
+    }
     .activity-selector { 
       display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
       margin-bottom: 15px;
