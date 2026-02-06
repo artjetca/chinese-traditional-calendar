@@ -147,7 +147,7 @@ function generateStaticHTML(): string {
     <h1>🗓️ Calendario Tradicional Chino</h1>
     
     <div class="date-picker">
-      <input type="date" id="datePicker" value="${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}">
+      <input type="date" id="datePicker" value="${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}" onchange="changeDate()">
       <button onclick="changeDate()">Buscar</button>
       <button onclick="goToday()">Hoy</button>
     </div>
@@ -339,13 +339,15 @@ function generateStaticHTML(): string {
       if (date) {
         let url = '/?date=' + date;
         if (selectedActivity) url += '&activity=' + encodeURIComponent(selectedActivity);
-        window.location.href = url;
+        window.history.replaceState({}, '', url);
+        loadDayInfo(date);
       }
     }
 
     function goToday() {
       const today = new Date().toISOString().split('T')[0];
-      window.location.href = '/?date=' + today;
+      document.getElementById('datePicker').value = today;
+      changeDate();
     }
 
     function checkActivity() {
@@ -378,9 +380,11 @@ function generateStaticHTML(): string {
         showDayModal(y, m, d);
       } else {
         const date = y + '-' + String(m).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+        document.getElementById('datePicker').value = date;
         let url = '/?date=' + date;
         if (selectedActivity) url += '&activity=' + encodeURIComponent(selectedActivity);
-        window.location.href = url;
+        window.history.replaceState({}, '', url);
+        loadDayInfo(date);
       }
     }
 
